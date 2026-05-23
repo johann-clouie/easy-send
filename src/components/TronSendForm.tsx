@@ -9,6 +9,13 @@ import {
   tronAddressFromPrivateKey,
 } from "@/lib/tron";
 import {
+  AntiAutofillForm,
+  AmountInput,
+  RecipientAddressInput,
+  SenderAddressInput,
+  SigningKeyInput,
+} from "./SendInputs";
+import {
   ActionButtons,
   CharCount,
   SendFormShell,
@@ -115,71 +122,68 @@ export function TronSendForm({ config }: { config: ChainConfig }) {
 
   return (
     <SendFormShell>
+      <AntiAutofillForm>
+      <div className="space-y-5">
       <div>
         <div className="mb-2 flex items-center gap-2">
           <StepBadge n={1} />
-          <label className="text-sm text-zinc-400">{config.addressLabel}</label>
+          <label className="text-sm text-zinc-400" htmlFor="chain-sender-address">
+            {config.addressLabel}
+          </label>
           <CharCount value={sender} max={config.charMax} />
         </div>
-        <input
-          type="text"
+        <SenderAddressInput
+          id="chain-sender-address"
           value={sender}
           onChange={(e) => setSender(e.target.value)}
           placeholder={config.addressPlaceholder}
-          className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-4 py-3 font-mono text-sm text-zinc-100 outline-none focus:border-sky-500"
-          spellCheck={false}
-          autoComplete="off"
         />
       </div>
 
       <div>
         <div className="mb-2 flex items-center gap-2">
           <StepBadge n={2} />
-          <label className="text-sm text-zinc-400">
+          <label className="text-sm text-zinc-400" htmlFor="chain-signing-key">
             Your private key ({config.keyHint}) 🔑
           </label>
         </div>
-        <input
-          type="password"
+        <SigningKeyInput
+          id="chain-signing-key"
           value={privateKey}
           onChange={(e) => setPrivateKey(e.target.value)}
           placeholder={config.keyHint}
-          className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-4 py-3 font-mono text-sm text-zinc-100 outline-none focus:border-amber-500/80"
-          spellCheck={false}
-          autoComplete="off"
         />
       </div>
 
       <div>
         <div className="mb-2 flex items-center gap-2">
           <StepBadge n={3} />
-          <label className="text-sm text-zinc-400">Transfer to address</label>
+          <label className="text-sm text-zinc-400" htmlFor="chain-recipient-address">
+            Transfer to address
+          </label>
           <CharCount value={recipient} max={config.charMax} />
         </div>
-        <input
-          type="text"
+        <RecipientAddressInput
+          id="chain-recipient-address"
           value={recipient}
           onChange={(e) => setRecipient(e.target.value)}
           placeholder={config.addressPlaceholder}
-          className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-4 py-3 font-mono text-sm text-zinc-100 outline-none focus:border-emerald-500/80"
-          spellCheck={false}
-          autoComplete="off"
         />
       </div>
 
       <div>
         <div className="mb-2 flex items-center gap-2">
           <StepBadge n={4} />
-          <label className="text-sm text-zinc-400">Amount</label>
+          <label className="text-sm text-zinc-400" htmlFor="chain-transfer-amount">
+            Amount
+          </label>
         </div>
         <div className="flex gap-2">
-          <input
-            type="text"
-            inputMode="decimal"
+          <AmountInput
+            id="chain-transfer-amount"
             value={amount}
             onChange={(e) => setAmount(e.target.value)}
             placeholder="0"
-            className="flex-1 rounded-lg border border-zinc-700 bg-zinc-950 px-4 py-3 text-sm text-zinc-100 outline-none focus:border-sky-500"
           />
           <button
             type="button"
@@ -210,6 +214,8 @@ export function TronSendForm({ config }: { config: ChainConfig }) {
         loading={status.type === "loading"}
         showCopy={false}
       />
+      </div>
+      </AntiAutofillForm>
     </SendFormShell>
   );
 }

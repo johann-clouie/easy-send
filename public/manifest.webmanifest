@@ -1,0 +1,25 @@
+{
+  "name": "Easy Send — Send Crypto Online",
+  "short_name": "Easy Send",
+  "description": "Send Bitcoin, Ethereum, Tron, BNB, USDT, and USDC online.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0a0a",
+  "theme_color": "#0a0a0a",
+  "orientation": "portrait-primary",
+  "lang": "en",
+  "icons": [
+    {
+      "src": "/favicon.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

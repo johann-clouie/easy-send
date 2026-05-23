@@ -27,7 +27,7 @@ export function CharCount({ value, max }: { value: string; max: number }) {
 export function SendFormShell({ children }: { children: ReactNode }) {
   return (
     <div className="w-full max-w-2xl rounded-2xl border border-zinc-800 bg-zinc-900/90 p-6 shadow-xl">
-      <div className="space-y-5">{children}</div>
+      {children}
     </div>
   );
 }

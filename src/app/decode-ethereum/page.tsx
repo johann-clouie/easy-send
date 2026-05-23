@@ -1,5 +1,14 @@
 import { DecodeEthereumForm } from "@/components/DecodeForm";
 import { NetworkTabs } from "@/components/NetworkTabs";
+import { createPageMetadata } from "@/lib/seo";
+
+export const metadata = createPageMetadata({
+  title: "Decode Ethereum transaction",
+  description:
+    "Paste a signed Ethereum transaction hex to view to, from, value, gas, and data.",
+  path: "/decode-ethereum",
+  keywords: ["decode ethereum transaction", "ETH raw tx", "ethereum hex decoder"],
+});
 
 export default function DecodeEthereumPage() {
   return (

@@ -1,5 +1,14 @@
 import { DecodeBitcoinForm } from "@/components/DecodeForm";
 import { NetworkTabs } from "@/components/NetworkTabs";
+import { createPageMetadata } from "@/lib/seo";
+
+export const metadata = createPageMetadata({
+  title: "Decode Bitcoin transaction",
+  description:
+    "Paste a raw Bitcoin transaction hex to inspect inputs, outputs, and value.",
+  path: "/decode-bitcoin",
+  keywords: ["decode bitcoin transaction", "BTC raw tx", "bitcoin hex decoder"],
+});
 
 export default function DecodeBitcoinPage() {
   return (
