@@ -20,5 +20,4 @@ body {
 /* Mask signing key without type=password (stops login autofill heuristics). */
 input[name="chain-signing-key"] {
   -webkit-text-security: disc;
-  text-security: disc;
 }
